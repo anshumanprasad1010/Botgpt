@@ -10,6 +10,7 @@ app.use(express.static("views"));
 app.use(express.static("public"));
 
 const PORT = process.env.PORT || 3000;
+
 const server = app.listen(
     PORT,
     console.log(
@@ -17,10 +18,8 @@ const server = app.listen(
     )
   );
 
-
-
-
 const io = socketio(server);
+
 io.on("connection", function (socket) {
   console.log("a user connected");
 
@@ -36,7 +35,7 @@ io.on("connection", function (socket) {
         const gptResponse = await openai.createCompletion({
             model: "text-davinci-003",
             prompt: query,
-            max_tokens: 50,
+            max_tokens: 100,
             temperature: 0,
             n:1,
             stop: "/n"

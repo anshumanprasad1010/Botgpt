@@ -4,6 +4,7 @@
   "description": "Voice Bot GPT",
   "main": "app.js",
   "scripts": {
+    "start":"nodemon app.js",  
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Anshuman",
@@ -11,9 +12,10 @@
   "dependencies": {
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "nodemon": "^2.0.22",
     "openai": "^3.3.0",
-    "socket.io": "^4.7.0",
-    "socket.io-client": "^4.7.0"
+    "socket.io": "^4.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
