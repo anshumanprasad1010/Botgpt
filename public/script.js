@@ -11,10 +11,12 @@ const recognition = new SpeechRecognition();
 recognition.lang = "en-US";
 recognition.interimResults = false;
 
+//After button is clicked, voice recognition starts
 btn.addEventListener("click", () => {
   recognition.start();
 });
 
+//User voice input displayed and sent to backend in text form
 recognition.onresult = function (event) {
   const last = event.results.length - 1;
   const text = event.results[last][0].transcript;
@@ -25,6 +27,7 @@ recognition.onresult = function (event) {
   socket.emit("chat message", text);
 };
 
+//Function to output the text response into audio form 
 const botReply = (text) => {
   const synth = window.speechSynthesis;
   const utterance = new SpeechSynthesisUtterance();
@@ -34,6 +37,7 @@ const botReply = (text) => {
   synth.speak(utterance);
 };
 
+//Display and process the text response from backend
 socket.on("bot reply", (text) => {
   outputbot.textContent = text;
   botReply(text);
