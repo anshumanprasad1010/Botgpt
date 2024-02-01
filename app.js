@@ -1,7 +1,9 @@
 const express = require("express");
 require("dotenv").config();
 const socketio = require("socket.io");
-const { Configuration, OpenAIApi } = require("openai");
+const { OpenAI } = require("openai");
+
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY }) ;
 
 const app = express();
 
@@ -30,21 +32,14 @@ io.on("connection", function (socket) {
 
     const callapibot = async (query) => {
       try {
-        const configuration = new Configuration({
-            apiKey: process.env.API_KEY,     
-          });
-        const openai = new OpenAIApi(configuration); 
-        const gptResponse = await openai.createCompletion({
-            model: "text-davinci-003",
-            prompt: query,
-            max_tokens: 100,
-            temperature: 0,
-            n:1,
-            stop: "/n"
+        const gptResponse = await openai.chat.completions.create({
+          messages: [{ role: "system", content: query }],
+          model: "gpt-3.5-turbo",
         });
+      
         
-        const { choices } = gptResponse.data;
-        const result = choices[0].text.trim();
+        const { choices } = gptResponse;
+        const result = choices[0].message.content;
       
         //Processed response sent back to user
         socket.emit("bot reply", result);
