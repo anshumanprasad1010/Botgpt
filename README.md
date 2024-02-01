@@ -10,17 +10,16 @@ Speech to text and text to speech conversion using browsers SpeechRecogintion fu
 
 1. Clone the repo and cd into project folder
 
-2. Install dependencies
-    (updated with openai 4.0)
-    npm i
+2. Install dependencies(updated with openai >= 4.0)
+npm i
    
 3. Create a .env file with structure like below
-    PORT=< PORT >
-    OPENAI_API_KEY=< Your API Key >
+PORT=< PORT >
+OPENAI_API_KEY=< Your API Key >
 
-    OPENAI_API_KEY is being used in the 6th line of app.js
+OPENAI_API_KEY is being used in the 6th line of app.js
 
 4. Run the server 
-    npm start or nodemon app.js
+npm start or nodemon app.js
 
-5. Open localhost:<PORT> in the browser
+5. Open localhost:< PORT > in the browser
