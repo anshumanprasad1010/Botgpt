@@ -15,8 +15,8 @@ Speech to text and text to speech conversion using browsers SpeechRecogintion fu
     npm i
    
 3. Create a .env file with structure like below
-    PORT=<PORT>
-    OPENAI_API_KEY=<Your API Key>
+    PORT=< PORT >
+    OPENAI_API_KEY=< Your API Key >
 
     OPENAI_API_KEY is being used in the 6th line of app.js
 
